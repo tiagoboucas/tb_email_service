@@ -13,7 +13,7 @@ curl -X POST {{url}}/send -H "Content-Type: application/json" \
 -d '{
     "to": "test@mail.com",
     "subject": "Test HTML Email",
-    "content": "<h1>This is an HTML email</h1><p>Sent from my Flask mail server.</p>",
+    "content": "{{add_html_here}}",
     "content_type": "html"
 }'
 
