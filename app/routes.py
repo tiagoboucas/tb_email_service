@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from .mail import send_email
 from .models import db, Email
 from functools import wraps
@@ -16,6 +16,24 @@ def require_api_key(view_function):
         else:
             return jsonify({"error": "Unauthorized: Invalid or missing API key"}), 401
     return decorated_function
+
+@routes_app.route('/', methods=['GET'])
+def index():
+    endpoints = [
+        {
+            "url": "/send",
+            "method": "POST",
+            "description": "Send an email",
+            "curl_example": "curl -X POST -H 'Content-Type: application/json' -H 'X-API-KEY: YOUR_API_KEY' -d '{\"to\": \"recipient@example.com\", \"subject\": \"Test Subject\", \"content\": \"Test Content\"}' {SERVER_URL}/send"
+        },
+        {
+            "url": "/emails",
+            "method": "GET",
+            "description": "Get all emails",
+            "curl_example": "curl -X GET -H 'X-API-KEY: YOUR_API_KEY' {SERVER_URL}/emails"
+        }
+    ]
+    return render_template('index.html', endpoints=endpoints)
 
 @routes_app.route('/send', methods=['POST'])
 @require_api_key

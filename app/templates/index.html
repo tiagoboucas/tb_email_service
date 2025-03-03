@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Endpoints</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .endpoint {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .endpoint h2 {
+            margin-top: 0;
+            color: #555;
+        }
+        .endpoint p {
+            margin: 5px 0;
+        }
+        .curl-example {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 3px;
+            font-family: monospace;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Endpoints</h1>
+    {% for endpoint in endpoints %}
+    <div class="endpoint">
+        <h2>{{ endpoint.url }} ({{ endpoint.method }})</h2>
+        <p><strong>Description:</strong> {{ endpoint.description }}</p>
+        <p><strong>Example cURL:</strong></p>
+        <div class="curl-example">{{ endpoint.curl_example }}</div>
+    </div>
+    {% endfor %}
+</body>
+</html>
