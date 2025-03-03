@@ -26,3 +26,8 @@ curl -X POST {{url}}/send -H "Content-Type: application/json" \
     "content": "Sent from my Flask mail server....",
     "content_type": "plain"
 }'
+
+### Commands
+pip install -r requirements.txt
+
+python run.py
