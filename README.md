@@ -31,3 +31,6 @@ curl -X POST {{url}}/send -H "Content-Type: application/json" \
 pip install -r requirements.txt
 
 python run.py
+
+### Next steps
+Add swagger to document APIs
